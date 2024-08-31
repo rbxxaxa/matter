@@ -52,8 +52,24 @@ local function useCurrentSystem()
 	return stack[#stack].node.currentSystem
 end
 
+--[=[
+	@within Matter
+	Returns the values passed into Loop.new from anywhere within the loop.
+]=]
 local function useLoopState(): ...any
 	return stack[#stack].node.getState()
+end
+
+--[=[
+	@withing Matter
+	Returns a table that is unique to the current system in this loop. This table is not shared between systems.
+]=]
+local function useSystemStorage()
+	if not stack[#stack].node.system.state then
+		stack[#stack].node.system.state = {}
+	end
+
+	return stack[#stack].node.system.state
 end
 
 --[=[
@@ -176,4 +192,5 @@ return {
 	useCurrentSystem = useCurrentSystem,
 	withinTopoContext = withinTopoContext,
 	useLoopState = useLoopState,
+	useSystemStorage = useSystemStorage,
 }

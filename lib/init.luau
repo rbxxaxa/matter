@@ -74,6 +74,7 @@ return table.freeze({
 	useHookState = topoRuntime.useHookState,
 	useCurrentSystem = topoRuntime.useCurrentSystem,
 	useLoopState = topoRuntime.useLoopState,
+	useSystemStorage = topoRuntime.useSystemStorage,
 
 	merge = immutable.merge,
 	None = immutable.None,
