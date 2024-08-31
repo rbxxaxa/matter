@@ -1,5 +1,5 @@
 [package]
-name = "matter-ecs/matter"
+name = "rbxxaxa/matter"
 description = "A modern ECS library for Roblox"
 version = "0.8.4"
 license = "MIT"

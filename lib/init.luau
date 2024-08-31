@@ -73,6 +73,7 @@ return table.freeze({
 	log = require(script.hooks.log),
 	useHookState = topoRuntime.useHookState,
 	useCurrentSystem = topoRuntime.useCurrentSystem,
+	useLoopState = topoRuntime.useLoopState,
 
 	merge = immutable.merge,
 	None = immutable.None,

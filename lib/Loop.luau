@@ -351,6 +351,10 @@ end
 function Loop:begin(events)
 	local connections = {}
 
+	local function getState(): ...any
+		return unpack(self._state, 1, self._stateLength)
+	end
+
 	for eventName, event in pairs(events) do
 		local lastTime = os.clock()
 		local generation = false
@@ -382,6 +386,7 @@ function Loop:begin(events)
 
 			for _, system in ipairs(self._orderedSystemsByEvent[eventName]) do
 				topoRuntime.start({
+					getState = getState,
 					system = self._systemState[system],
 					frame = {
 						generation = generation,

@@ -52,6 +52,10 @@ local function useCurrentSystem()
 	return stack[#stack].node.currentSystem
 end
 
+local function useLoopState(): ...any
+	return stack[#stack].node.getState()
+end
+
 --[=[
 	@within Matter
 
@@ -171,4 +175,5 @@ return {
 	useFrameState = useFrameState,
 	useCurrentSystem = useCurrentSystem,
 	withinTopoContext = withinTopoContext,
+	useLoopState = useLoopState,
 }
