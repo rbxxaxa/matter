@@ -131,6 +131,7 @@ function Loop:scheduleSystems(systems: { System })
 			table.insert(self._systems, system)
 		end
 		self._systemState[system] = {}
+		self._perSystemStorage[system] = {}
 
 		if RunService:IsStudio() then
 			-- In Studio, we start logging immediately.
@@ -196,7 +197,9 @@ function Loop:replaceSystem(old: System, new: System)
 	table.insert(self._systems, new)
 
 	self._systemState[new] = self._systemState[old] or {}
+	self._perSystemStorage[new] = self._perSystemStorage[old] or {}
 	self._systemState[old] = nil
+	self._perSystemStorage[old] = nil
 
 	if self._skipSystems[old] then
 		self._skipSystems[old] = nil
@@ -388,6 +391,7 @@ function Loop:begin(events)
 				topoRuntime.start({
 					getState = getState,
 					system = self._systemState[system],
+					systemStorage = self._perSystemStorage[system],
 					frame = {
 						generation = generation,
 						deltaTime = deltaTime,
