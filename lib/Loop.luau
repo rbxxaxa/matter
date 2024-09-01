@@ -56,6 +56,7 @@ function Loop.new(...)
 		_state = { ... },
 		_stateLength = select("#", ...),
 		_systemState = {},
+		_perSystemStorage = {},
 		_middlewares = {},
 		_systemErrors = {},
 		_systemLogs = {},
